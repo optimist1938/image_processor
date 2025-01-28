@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.27.4)
+
+project(unit_tests)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_library(
+        contrib_catch_main
+        ../../../../contrib/catch/catch_main.cpp
+)
+
+target_include_directories(
+        contrib_catch_main
+        PUBLIC ../../../../contrib/catch
+)
+
+add_executable(
+    unit_tests
+    unit_tests.cpp
+
+    ../image/pixel.cpp
+
+    ../image/picture.cpp
+
+    ../parsing/parser.cpp
+
+    ../image/reader.cpp
+    ../image/saver.cpp
+    ../Filters/filter.cpp
+)
+
+target_link_libraries(
+        unit_tests
+        contrib_catch_main
+)
